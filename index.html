@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Catálogo de Productos - Impulsa360</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            overflow: hidden;
+        }
+        .header {
+            text-align: center;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 40px 20px;
+            margin-bottom: 30px;
+        }
+        .header h1 {
+            margin: 0;
+            font-size: 2.5em;
+            font-weight: bold;
+        }
+        .header p {
+            margin: 10px 0 0 0;
+            font-size: 1.2em;
+            opacity: 0.9;
+        }
+        .productos-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 30px;
+            padding: 30px;
+            margin: 0 auto;
+        }
+        .producto-card {
+            background: white;
+            border-radius: 15px;
+            padding: 25px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+            transition: all 0.3s ease;
+            border: 1px solid #e9ecef;
+            position: relative;
+            overflow: hidden;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            height: fit-content;
+            min-height: 550px;
+        }
+        .producto-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 30px rgba(0,0,0,0.2);
+        }
+         .producto-imagen-container {
+                    text-align: center;
+                    margin: 0 auto 20px auto;
+                    width: 100%;
+                    height: 350px;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    overflow: hidden;
+                    border-radius: 12px;
+                    background: #f8f9fa;
+                    border: 2px solid #e9ecef;
+                }
+                .producto-imagen {
+                    max-width: 100%;
+                    max-height: 100%;
+                    width: auto;
+                    height: auto;
+                    object-fit: contain;
+                    border-radius: 10px;
+                    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+                }
+                .producto-imagen-placeholder {
+                    width: 100%;
+                    height: 100%;
+                    background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+                    border-radius: 12px;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    color: white;
+                    font-weight: bold;
+                    font-size: 1.2em;
+                    border: 3px dashed #dee2e6;
+                    text-align: center;
+                    padding: 20px;
+                }
+        .producto-info {
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            margin-bottom: 20px;
+        }
+        .producto-nombre {
+            font-weight: bold;
+            font-size: 1.4em;
+            color: #2c3e50;
+            margin-bottom: 15px;
+            line-height: 1.3;
+        }
+        .producto-precio {
+            font-size: 1.3em;
+            color: #e74c3c;
+            font-weight: bold;
+            margin: 8px 0;
+        }
+        .producto-stock {
+            font-size: 1.1em;
+            color: #27ae60;
+            margin: 5px 0;
+        }
+        .producto-categoria {
+            font-size: 1.1em;
+            color: #9b59b6;
+            margin: 5px 0;
+        }
+        .producto-descripcion {
+            font-size: 1em;
+            color: #7f8c8d;
+            margin: 10px 0;
+            line-height: 1.4;
+            flex-grow: 1;
+        }
+        .botones-container {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            margin-top: auto;
+            width: 100%;
+        }
+        .boton-whatsapp {
+            background: linear-gradient(135deg, #25D366, #128C7E);
+            color: white;
+            padding: 12px 20px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1em;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 12px rgba(37, 211, 102, 0.3);
+            border: none;
+            cursor: pointer;
+            width: 100%;
+            text-align: center;
+            display: block;
+            box-sizing: border-box;
+        }
+        .boton-whatsapp:hover {
+            background: linear-gradient(135deg, #128C7E, #25D366);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 18px rgba(37, 211, 102, 0.4);
+            text-decoration: none;
+            color: white;
+        }
+        .footer {
+            text-align: center;
+            margin-top: 40px;
+            padding: 30px;
+            background: #f8f9fa;
+            color: #6c757d;
+            border-top: 1px solid #dee2e6;
+        }
+        @media (max-width: 768px) {
+            .productos-grid {
+                grid-template-columns: 1fr;
+                padding: 15px;
+                gap: 25px;
+            }
+            .header h1 {
+                font-size: 2em;
+            }
+            .producto-imagen-container {
+                height: 200px;
+            }
+            .producto-imagen-placeholder {
+                font-size: 1em;
+            }
+            .botones-container {
+                flex-direction: column;
+                gap: 10px;
+                margin-top: 15px;
+            }
+            .boton-whatsapp {
+                width: 100%;
+                padding: 16px 10px;
+                font-size: 16px;
+                min-height: 50px;
+            }
+            .producto-card {
+                padding: 20px;
+                margin: 0 5px;
+                min-height: 500px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🛍️ Catálogo de Productos</h1>
+            <p>Impulsa360 - Emprendimientos Sociales</p>
+<p><strong>Emprendedor:</strong> keiner</p></div>
+<div class="productos-grid">
+<div class="producto-card">
+<div class="producto-imagen-container">
+<div class="producto-imagen-placeholder">🛒 Producto<br>Producto</div>
+</div>
+<div class="producto-info">
+<div class="producto-nombre">1. Producto</div>
+<div class="producto-categoria">🏷️ Categoría</div>
+<div class="producto-precio">💰 Precio: $10.000</div>
+<div class="producto-stock">📦 Stock: 5 unidades</div>
+<div class="producto-descripcion">📝 Descripción</div>
+</div>
+<div class="botones-container">
+<a href="https://wa.me/3218094805?text=Hola%21+Estoy+interesado+en+el+producto%3A+Producto+-+Precio%3A+Precio%3A+%2410.000" target="_blank" class="boton-whatsapp" title="Consultar por WhatsApp sobre: Producto">💬 Consultar por WhatsApp</a>
+</div>
+</div>
+</div>
+<div class="footer">
+    <p>📅 Generado el:2025-11-10 | 🛍️ Total productos: 1        </p>
+            <p>✨ Impulsa360 - Plataforma para Fundaciones y Emprendedores Sociales</p>
+        </div>
+    </div>
+</body>
+</html>
